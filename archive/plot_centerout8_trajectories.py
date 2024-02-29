@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.collections
 import data_util
 
-sessions = ['2024-01-16_H1_CL_1', '2024-01-16_H1_CL_2', '2024-01-16_H1_CL_3'] # all the sessions for which to plot the trajectories
+sessions = ['2024-02-02_H2_CL_5'] # all the sessions for which to plot the trajectories
 # sessions = ['2024-01-15_H1_CL_2'] # all the sessions for which to plot the trajectories
 
 def get_trials_indices(session):
@@ -26,14 +26,14 @@ colors = ['r', 'g', 'b', 'm', 'c', 'y', 'k', 'orange']
 
 # Define positions for 8 targets
 positions = [
-    (-0.8, 0),    # Left
-    (0.8, 0),     # Right
-    (0, 0.8),     # Up
-    (0, -0.8),    # Down
-    (-0.5657, 0.5657),  # LeftUp
-    (-0.5657, -0.5657), # LeftDown
-    (0.5657, 0.5657),   # RightUp
-    (0.5657, -0.5657)   # RightDown
+    (-0.7, 0),    # Left
+    (0.7, 0),     # Right
+    (0, 0.7),     # Up
+    (0, -0.7),    # Down
+    (-0.495, 0.495),  # LeftUp
+    (-0.495, -0.495), # LeftDown
+    (0.495, 0.495),   # RightUp
+    (0.495, -0.495)   # RightDown
 ]
 
 # Create 8 subplots
@@ -62,32 +62,36 @@ for session in sessions:
         ax.axis('off')
         plt.tight_layout()
         # print(f"Session: {session}, Trial: {trial_no}, Target: {target_no}, Data Shape: {xy.shape}")
-        
+# target_nos = task_data['state_task'][trial_start_inds]
+# for target_no, ax in enumerate(axes):
+#     if target_no > 3:
+#         target_no += 1
+#     ax.set_title( str(int(np.sum(target_nos == target_no))))
 
-# # Fill areas with circles for 8 targets
-# for i in range(8):
-#     circle = plt.Circle(positions[i], 0.39/2, color=colors[i], alpha=0.4, zorder=-4)
-#     cursor = plt.Circle((0.0, 0.0), 0.1/2, color='gray', alpha=0.4, zorder=-4)
-#     ax = axes[i]
-#     # Draw a bounding box
-#     ax.plot([-1, 1, 1, -1, -1], [-1, -1, 1, 1, -1], 'gray', alpha=0.3, zorder=-3)
-#     ax.add_patch(circle)
-#     ax.add_patch(cursor)
-
-# Fill areas with rectangles for 8 targets
+# Fill areas with circles for 8 targets
 for i in range(8):
-    rect_width = 0.4
-    rect_height = 0.4
-    rect = plt.Rectangle((positions[i][0] - rect_width / 2, positions[i][1] - rect_height / 2),
-                         rect_width, rect_height, color=colors[i], alpha=0.4, zorder=-4)
-    
+    circle = plt.Circle(positions[i], 0.4/2, color=colors[i], alpha=0.4, zorder=-4)
     cursor = plt.Circle((0.0, 0.0), 0.1/2, color='gray', alpha=0.4, zorder=-4)
     ax = axes[i]
     # Draw a bounding box
     ax.plot([-1, 1, 1, -1, -1], [-1, -1, 1, 1, -1], 'gray', alpha=0.3, zorder=-3)
-    ax.add_patch(rect)
+    ax.add_patch(circle)
     ax.add_patch(cursor)
 
-fig.savefig('figures/2024-01-16_H1/CL_123_separate_targets.pdf')
-fig.savefig('figures/2024-01-16_H1/CL_123_separate_targets.png')
+# # Fill areas with rectangles for 8 targets
+# for i in range(8):
+#     rect_width = 0.4
+#     rect_height = 0.4
+#     rect = plt.Rectangle((positions[i][0] - rect_width / 2, positions[i][1] - rect_height / 2),
+#                          rect_width, rect_height, color=colors[i], alpha=0.4, zorder=-4)
+    
+#     cursor = plt.Circle((0.0, 0.0), 0.1/2, color='gray', alpha=0.4, zorder=-4)
+#     ax = axes[i]
+#     # Draw a bounding box
+#     ax.plot([-1, 1, 1, -1, -1], [-1, -1, 1, 1, -1], 'gray', alpha=0.3, zorder=-3)
+#     ax.add_patch(rect)
+#     ax.add_patch(cursor)
+
+fig.savefig('figures/2024-02-02_H2/CL_5_separate_targets.pdf')
+fig.savefig('figures/2024-02-02_H2/CL_5_separate_targets.png')
 
