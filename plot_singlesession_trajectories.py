@@ -54,6 +54,7 @@ def get_target_pos_dia(data_path):
     return positions, target_dia[0]
 
 def get_copilot_status(data_path):
+    """ returns the copilot status. 1.0: no copilot, 0.0: copilot ON """
     readme = get_target_info(data_path)
     copilot_info = readme['kfCopilotAlpha (1.0']
     values = re.findall(r'[-+]?\d*\.\d+|\d+', copilot_info)
@@ -61,6 +62,7 @@ def get_copilot_status(data_path):
     return copilot
 
 def plot_trajectories(session):
+    """ plot single session trajectories """
     datadir = pathlib.Path('/data/raspy/')
     data_path = datadir / session
 
