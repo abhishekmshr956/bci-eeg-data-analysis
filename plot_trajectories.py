@@ -53,6 +53,12 @@ def get_target_pos_dia(data_path):
 
     return positions, target_dia[0]
 
+def get_copilot_status(data_path):
+    readme = get_target_info(data_path)
+    copilot_info = readme['kfCopilotAlpha (1.0']
+    values = re.findall(r'[-+]?\d*\.\d+|\d+', copilot_info)
+    copilot = float(values[0]) # (1.0: no copilot)
+    return copilot
 
 def plot_trajectories(session):
     datadir = pathlib.Path('/data/raspy/')
@@ -108,29 +114,13 @@ def plot_trajectories(session):
         ax.text(-1, 1, '1', fontsize=10, ha='right', va='bottom')
         ax.text(1, -1, '1', fontsize=10, ha='left', va='top')
 
+    copilot_info = get_copilot_status(data_path) #kfCopilotAlpha (1.0: no copilot)
+    copilot = 'copilot_ON' if copilot_info == 0.0 else ''
 
-    fig.suptitle(f'{session} (with copilot)', fontsize = 16, y= 0.75)
+
+    fig.suptitle(f'{session} {copilot}', fontsize = 16, y= 0.75)
     plt.tight_layout()
-    plt.savefig(f'figures/test.pdf', bbox_inches='tight')
-
-
-
-
-
-
-
-
-
-    
-
-   
-    
-
-
-    
-
-  
-
+    plt.savefig(f'figures/{session}_{copilot}.pdf', bbox_inches='tight')
 
 
 if __name__ == '__main__':
