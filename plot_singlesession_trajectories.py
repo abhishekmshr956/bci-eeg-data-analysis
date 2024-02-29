@@ -122,7 +122,7 @@ def plot_trajectories(session):
 
     fig.suptitle(f'{session} {copilot} target dia {target_dia}', fontsize = 16, y= 0.75)
     plt.tight_layout()
-    plt.savefig(f'figures/{session}_{copilot if copilot == "copilot_ON" else ""}.pdf', bbox_inches='tight')
+    plt.savefig(f'figures/trajectory_plots/{session}_{copilot if copilot == "copilot_ON" else ""}.pdf', bbox_inches='tight')
 
 
 if __name__ == '__main__':
