@@ -2,3 +2,6 @@
 *.ipynb_checkpoints
 *.pyc
 *.png
+*.pdf
+figures/trajectory_plots/2024-02-14_H1_CL_CP_2.pdf
+figures/path_efficiency_plots/2024-02-14_H1_CL_CP_1_2_Pathefficiency.pdf

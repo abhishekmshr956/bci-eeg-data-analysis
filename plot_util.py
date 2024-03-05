@@ -19,7 +19,7 @@ def get_target_info(data_path):
 
     for line in lines:
         # Split each line into key and value using the ':' as a separator
-        split_result = line.split(':', 1)
+        split_result = line.rsplit(':', 1) # doing rsplit instead of split would be a better option
 
         # check if the split result has at least two elements
         if len(split_result) >= 2:
