@@ -6,11 +6,11 @@ import argparse
 import ast
 import re
 
-from plot_util import get_target_info, get_target_pos_dia
+from plot_util import get_readme, get_target_pos_dia
 
 def get_copilot_status(data_path):
     """ returns the copilot status. 1.0: no copilot, 0.0: copilot ON """
-    readme = get_target_info(data_path)
+    readme = get_readme(data_path)
     copilot = float(readme['kfCopilotAlpha (1.0: no copilot)'])
     return copilot
 

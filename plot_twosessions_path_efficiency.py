@@ -6,7 +6,7 @@ import math
 import argparse
 
 from scipy.stats import ttest_ind
-from plot_util import get_target_info, get_target_pos_dia
+from plot_util import get_target_pos_dia
 
 def get_task_data(session):
     """ returns task_data, state_task, start and end indices for a session """

@@ -6,7 +6,7 @@ import argparse
 import ast
 import re
 
-def get_target_info(data_path):
+def get_readme(data_path):
     """ converts readme.txt into a dictionary """
 
     readme_file_path = data_path / 'README.txt'
@@ -30,7 +30,7 @@ def get_target_info(data_path):
 
 def get_target_pos_dia(data_path):
     """ extracts target position and diameter from the readme.txt """
-    readme = get_target_info(data_path)
+    readme = get_readme(data_path)
     target_info = readme['Target info']
     # Use regular expressions to extract numeric values inside brackets
     values = re.findall(r'[-+]?\d*\.\d+|\d+', target_info)
