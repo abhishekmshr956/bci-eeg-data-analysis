@@ -31,14 +31,12 @@ def get_readme(data_path):
 def get_target_pos_dia(data_path):
     """ extracts target position and diameter from the readme.txt """
     readme = get_readme(data_path)
-    target_info = readme['Target info']
-    # Use regular expressions to extract numeric values inside brackets
-    values = re.findall(r'[-+]?\d*\.\d+|\d+', target_info)
+    array = np.array # for eval to work
     # Extract target_pos and target_size
-    target_pos = [float(values[0]), float(values[1])]
-    target_dia = [float(values[2]), float(values[3])]
+    target_pos = eval(readme['Target info'])[0][0]
+    target_dia = eval(readme['Target info'])[1][1]
 
-    if target_pos[0] == -0.7 or target_pos == 0.7:
+    if target_pos == -0.7 or target_pos == 0.7:
         # Define positions for 8 targets
         positions = [
             (-0.7, 0),    # Left
@@ -51,4 +49,4 @@ def get_target_pos_dia(data_path):
             (0.495, -0.495)   # RightDown
         ]
 
-    return positions, target_dia[0]
+    return positions, target_dia
