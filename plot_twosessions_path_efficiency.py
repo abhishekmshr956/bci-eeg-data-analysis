@@ -60,7 +60,6 @@ def calculate_efficiency_array(session):
         if target != 99:
             efficiency = path_efficiency(xy, np.abs(positions[0][0]))
             efficiency_array.append(efficiency)
-            # print(f'Trial Path Efficiency: {efficiency:.2f}%')
 
     mean_efficiency = np.mean(efficiency_array)
     std_dev_efficiency = np.std(efficiency_array)
@@ -105,6 +104,8 @@ def plot_path_efficiency(sessions):
 
     print(f'\nMean Path Efficiency: {mean_efficiency_session2:.2f}%')
     print(f'Standard Deviation of Path Efficiency: {std_dev_efficiency_session2:.2f}')
+
+    print(f'\np value: {p_value}')
     
 
 if __name__ == '__main__':

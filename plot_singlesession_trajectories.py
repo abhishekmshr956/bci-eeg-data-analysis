@@ -72,12 +72,12 @@ def plot_trajectories(session):
         ax.text(1, -1, '1', fontsize=10, ha='left', va='top')
 
     copilot_info = get_copilot_status(data_path) #kfCopilotAlpha (1.0: no copilot)
-    copilot = 'copilot_ON' if copilot_info == 0.0 else 'copilot_OFF'
+    copilot = '_copilot_ON' if copilot_info == 0.0 else 'copilot_OFF'
 
 
     fig.suptitle(f'{session} {copilot} target dia {target_dia}', fontsize = 16, y= 0.75)
     plt.tight_layout()
-    plt.savefig(f'figures/trajectory_plots/{session}_{copilot if copilot == "copilot_ON" else ""}.pdf', bbox_inches='tight')
+    plt.savefig(f'figures/trajectory_plots/{session}{copilot if copilot == "copilot_ON" else ""}.pdf', bbox_inches='tight')
 
 
 if __name__ == '__main__':
